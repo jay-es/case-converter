@@ -28,29 +28,29 @@
 </template>
 
 <script>
-import modeSelect from './components/mode-select.vue';
+import modeSelect from './components/mode-select.vue'
 
 const modes = [
   'space separated',
   'camelCase',
   'PascalCase',
   'snake_case',
-  'kebab-case',
-];
+  'kebab-case'
+]
 
 export default {
   name: 'app',
   components: {
-    modeSelect,
+    modeSelect
   },
-  data() {
+  data () {
     return {
       modes,
       inputMode: modes[0],
-      outputMode: modes[0],
-    };
-  },
-};
+      outputMode: modes[0]
+    }
+  }
+}
 </script>
 
 <style lang="scss">

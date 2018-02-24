@@ -4,9 +4,8 @@ module.exports = {
     es6: true,
     mocha: true,
   },
-  extends: 'airbnb',
+  extends: 'standard',
   plugins: [
-    'html',
   ],
   rules: {
   },
