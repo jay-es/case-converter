@@ -1,0 +1,4 @@
+./src/**/*.spec.js
+--reporter list
+--require babel-core/register
+--watch
