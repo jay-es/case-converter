@@ -1,33 +1,56 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <section class="section">
+      <main class="container">
+        <h1 class="title is-1">Case Converter</h1>
+
+        <div class="columns">
+          <div class="column">
+            <h2 class="title is-3">Input</h2>
+            <mode-select :modes="modes" v-model="inputMode" />
+            <textarea class="textarea" placeholder=""></textarea>
+          </div>
+          <div class="column">
+            <h2 class="title is-3">Output</h2>
+            <mode-select :modes="modes" v-model="outputMode" />
+            <textarea class="textarea" placeholder=""></textarea>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        &copy; jshindo-gladd
+      </div>
+    </footer>
   </div>
 </template>
 
 <script>
+import modeSelect from './components/mode-select.vue';
+
+const modes = [
+  'space separated',
+  'camelCase',
+  'PascalCase',
+  'snake_case',
+  'kebab-case',
+];
+
 export default {
   name: 'app',
-  data () {
+  components: {
+    modeSelect,
+  },
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-}
+      modes,
+      inputMode: modes[0],
+      outputMode: modes[0],
+    };
+  },
+};
 </script>
 
 <style lang="scss">
@@ -37,24 +60,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  // margin-top: 60px;
+}
+.textarea {
+  height: 20em;
+  resize: none;
 }
 
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>
