@@ -39,9 +39,9 @@ describe('encode', () => {
     assert.deepStrictEqual(output, encode('camelCase', input))
   })
 
-  it('PascalCase', () => {
+  it('pascalCase', () => {
     const output = 'FooBarBaz'
-    assert.deepStrictEqual(output, encode('PascalCase', input))
+    assert.deepStrictEqual(output, encode('pascalCase', input))
   })
 
   it('snakeCase', () => {
