@@ -8,6 +8,15 @@
           <div class="column">
             <h2 class="title is-3">Input</h2>
             <mode-select v-model="inputMode" :modes="inputModes" />
+          </div>
+          <div class="column">
+            <h2 class="title is-3">Output</h2>
+            <mode-select v-model="outputMode" :modes="outputModes" />
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column">
             <textarea
               v-model="inputText"
               :placeholder="inputPlaceholder"
@@ -15,8 +24,6 @@
             />
           </div>
           <div class="column">
-            <h2 class="title is-3">Output</h2>
-            <mode-select v-model="outputMode" :modes="outputModes" />
             <textarea
               :placeholder="outputPlaceholder"
               :value="outputText"
@@ -113,17 +120,12 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  // margin-top: 60px;
-}
 .textarea {
-  height: 20em;
+  height: 30em;
   resize: none;
+}
+.footer {
+  text-align: center;
 }
 
 </style>

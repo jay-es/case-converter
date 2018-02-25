@@ -1,16 +1,13 @@
 <template>
   <section class="mode-select">
-    <b-field position="is-centered">
-      <b-radio-button
-        v-for="(mode, i) of modes"
-        v-model="myValue"
-        :key="i"
-        :native-value="i"
-        size="is-small"
-      >
-        <span>{{ mode.label }}</span>
-      </b-radio-button>
-    </b-field>
+    <b-radio
+      v-for="(mode, i) of modes"
+      v-model="myValue"
+      :key="i"
+      :native-value="i"
+    >
+      <span>{{ mode.label }}</span>
+    </b-radio>
   </section>
 </template>
 
@@ -44,6 +41,18 @@ export default {
 
 <style lang="scss">
 .mode-select {
-  margin-bottom: 4px;
+  margin-right: -1em;
+  margin-bottom: -.75em;
+}
+.b-radio.radio {
+  margin-right: 1em;
+  margin-bottom: .75em;
+
+  & + & {
+    margin-left: 0;
+  }
+  .control-label {
+    padding-left: 0.33em;
+  }
 }
 </style>
