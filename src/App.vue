@@ -7,13 +7,21 @@
         <div class="columns">
           <div class="column">
             <h2 class="title is-3">Input</h2>
-            <textarea class="textarea" placeholder="" />
             <mode-select :modes="inputModes" v-model="inputMode" />
+            <textarea
+              class="textarea"
+              :placeholder="inputPlaceholder"
+              v-model="inputText"
+            />
           </div>
           <div class="column">
             <h2 class="title is-3">Output</h2>
-            <textarea class="textarea" placeholder="" />
             <mode-select :modes="outputModes" v-model="outputMode" />
+            <textarea
+              class="textarea"
+              :placeholder="outputPlaceholder"
+              :value="outputText"
+            />
           </div>
         </div>
       </main>
@@ -30,6 +38,8 @@
 <script>
 import modeSelect from './components/mode-select.vue'
 import Mode from './modules/Mode'
+import decode from './modules/decode'
+import encode from './modules/encode'
 
 const inputModes = [
   new Mode('spaceSeparated', 'space separated'),
@@ -62,6 +72,25 @@ export default {
       outputModes,
       inputMode: inputModes[0].val,
       outputMode: outputModes[0].val,
+      inputText: '',
+      inputPlaceholder: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
+    }
+  },
+  computed: {
+    outputPlaceholder () {
+      return this.inputPlaceholder
+        .split(/\n/)
+        .map(v => decode('spaceSeparated', v))
+        .map(v => encode(this.outputMode, v)).join('\n')
+    },
+    outputText () {
+      return this.inputText
+        .split(/\n/)
+        .map(v => decode(this.inputMode, v))
+        .map(v => encode(this.outputMode, v)).join('\n')
     }
   }
 }
