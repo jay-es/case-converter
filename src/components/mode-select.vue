@@ -3,9 +3,9 @@
     <b-field position="is-centered">
       <b-radio-button
         v-for="(mode, i) of modes"
+        v-model="myValue"
         :key="i"
         :native-value="i"
-        v-model="myValue"
         size="is-small"
       >
         <span>{{ mode.label }}</span>

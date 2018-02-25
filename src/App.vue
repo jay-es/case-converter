@@ -7,20 +7,20 @@
         <div class="columns">
           <div class="column">
             <h2 class="title is-3">Input</h2>
-            <mode-select :modes="inputModes" v-model="inputMode" />
+            <mode-select v-model="inputMode" :modes="inputModes" />
             <textarea
-              class="textarea"
-              :placeholder="inputPlaceholder"
               v-model="inputText"
+              :placeholder="inputPlaceholder"
+              class="textarea"
             />
           </div>
           <div class="column">
             <h2 class="title is-3">Output</h2>
-            <mode-select :modes="outputModes" v-model="outputMode" />
+            <mode-select v-model="outputMode" :modes="outputModes" />
             <textarea
-              class="textarea"
               :placeholder="outputPlaceholder"
               :value="outputText"
+              class="textarea"
             />
           </div>
         </div>
