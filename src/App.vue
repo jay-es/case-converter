@@ -56,7 +56,9 @@ const outputModes = [
   new Mode('camelCase', 'camelCase'),
   new Mode('pascalCase', 'PascalCase'),
   new Mode('snakeCase', 'snake_case'),
-  new Mode('kebabCase', 'kebab-case')
+  new Mode('kebabCase', 'kebab-case'),
+
+  new Mode('commaSeparated', 'comma,separated')
 ]
 
 export default {
@@ -85,6 +87,11 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
       return this.convert(this.inputText, this.inputMode)
     }
   },
+  watch: {
+    inputText (newVal) {
+      this.inputMode = this.detectModeIndex(newVal)
+    }
+  },
   methods: {
     convert (inputText, inputMode) {
       return inputText
@@ -92,6 +99,14 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
         .map(v => inputModes[inputMode].decode(v))
         .map(v => outputModes[this.outputMode].encode(v))
         .join('\n')
+    },
+    detectModeIndex (inputText) {
+      const lines = inputText.split('\n')
+      const counts = inputModes.map(mode =>
+        lines.reduce((acc, line) => acc + mode.decode(line).length, 0)
+      )
+      const maxCount = Math.max(...counts)
+      return counts.findIndex(v => v === maxCount)
     }
   }
 }

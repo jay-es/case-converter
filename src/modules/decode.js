@@ -6,7 +6,7 @@ export default (mode, text) => {
     case 'snakeCase': return text.split('_')
     case 'kebabCase': return text.split('-')
 
-    case 'camelCase': return text.split(/([A-Z]?[a-z]+)/).filter(v => v)
+    case 'camelCase': return text.split(/([A-Z]?[^A-Z]+)/).filter(v => v)
   }
 
   return text.split()
