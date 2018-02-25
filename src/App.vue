@@ -79,16 +79,19 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
   },
   computed: {
     outputPlaceholder () {
-      return this.inputPlaceholder
-        .split(/\n/)
-        .map(v => inputModes[0].decode(v))
-        .map(v => outputModes[this.outputMode].encode(v)).join('\n')
+      return this.convert(this.inputPlaceholder, 0)
     },
     outputText () {
-      return this.inputText
+      return this.convert(this.inputText, this.inputMode)
+    }
+  },
+  methods: {
+    convert (inputText, inputMode) {
+      return inputText
         .split(/\n/)
-        .map(v => inputModes[this.inputMode].decode(v))
-        .map(v => outputModes[this.outputMode].encode(v)).join('\n')
+        .map(v => inputModes[inputMode].decode(v))
+        .map(v => outputModes[this.outputMode].encode(v))
+        .join('\n')
     }
   }
 }
