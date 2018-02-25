@@ -7,13 +7,13 @@
         <div class="columns">
           <div class="column">
             <h2 class="title is-3">Input</h2>
-            <mode-select :modes="modes" v-model="inputMode" />
             <textarea class="textarea" placeholder="" />
+            <mode-select :modes="inputModes" v-model="inputMode" />
           </div>
           <div class="column">
             <h2 class="title is-3">Output</h2>
-            <mode-select :modes="modes" v-model="outputMode" />
             <textarea class="textarea" placeholder="" />
+            <mode-select :modes="outputModes" v-model="outputMode" />
           </div>
         </div>
       </main>
@@ -29,13 +29,26 @@
 
 <script>
 import modeSelect from './components/mode-select.vue'
+import Mode from './modules/Mode'
 
-const modes = [
-  'space separated',
-  'camelCase',
-  'PascalCase',
-  'snake_case',
-  'kebab-case'
+const inputModes = [
+  new Mode('spaceSeparated', 'space separated'),
+  new Mode('commaSeparated', 'comma,separated'),
+  new Mode('camelCase', 'camelCase / PascalCase'),
+  new Mode('snakeCase', 'snake_case'),
+  new Mode('kebabCase', 'kebab-case')
+]
+
+const outputModes = [
+  new Mode('upperCase', 'UPPER CASE'),
+  new Mode('lowerCase', 'lower case'),
+  new Mode('capitalizedCase', 'Capitalized Case'),
+  new Mode('sentenceCase', 'Sentence case'),
+
+  new Mode('camelCase', 'camelCase'),
+  new Mode('pascalCase', 'PascalCase'),
+  new Mode('snakeCase', 'snake_case'),
+  new Mode('kebabCase', 'kebab-case')
 ]
 
 export default {
@@ -45,9 +58,10 @@ export default {
   },
   data () {
     return {
-      modes,
-      inputMode: modes[0],
-      outputMode: modes[0]
+      inputModes,
+      outputModes,
+      inputMode: inputModes[0].val,
+      outputMode: outputModes[0].val,
     }
   }
 }

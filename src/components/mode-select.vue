@@ -2,13 +2,13 @@
   <section class="mode-select">
     <b-field position="is-centered">
       <b-radio-button
-        v-for="(modeName, i) of modes"
+        v-for="(mode, i) of modes"
         :key="i"
         v-model="value"
-        :native-value="modeName"
+        :native-value="mode.val"
         size="is-small"
       >
-        <span>{{ modeName }}</span>
+        <span>{{ mode.label }}</span>
       </b-radio-button>
     </b-field>
   </section>
@@ -33,7 +33,7 @@ export default {
     }
   },
   mounted () {
-    this.value = this.modes[0]
+    this.value = this.modes[0].val
   }
 }
 </script>
