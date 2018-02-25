@@ -4,8 +4,8 @@
       <b-radio-button
         v-for="(mode, i) of modes"
         :key="i"
-        v-model="value"
-        :native-value="mode.val"
+        :native-value="i"
+        v-model="myValue"
         size="is-small"
       >
         <span>{{ mode.label }}</span>
@@ -20,20 +20,24 @@ export default {
     modes: {
       type: Array,
       required: true
+    },
+    value: {
+      type: Number,
+      required: true
     }
   },
   data () {
     return {
-      value: ''
+      myValue: 0
     }
   },
   watch: {
-    value (v) {
+    myValue (v) {
       this.$emit('input', v)
+    },
+    value (v) {
+      this.myValue = v
     }
-  },
-  mounted () {
-    this.value = this.modes[0].val
   }
 }
 </script>

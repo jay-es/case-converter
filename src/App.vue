@@ -38,8 +38,6 @@
 <script>
 import modeSelect from './components/mode-select.vue'
 import Mode from './modules/Mode'
-import decode from './modules/decode'
-import encode from './modules/encode'
 
 const inputModes = [
   new Mode('spaceSeparated', 'space separated'),
@@ -70,8 +68,8 @@ export default {
     return {
       inputModes,
       outputModes,
-      inputMode: inputModes[0].val,
-      outputMode: outputModes[0].val,
+      inputMode: 0,
+      outputMode: 0,
       inputText: '',
       inputPlaceholder: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -83,14 +81,14 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
     outputPlaceholder () {
       return this.inputPlaceholder
         .split(/\n/)
-        .map(v => decode('spaceSeparated', v))
-        .map(v => encode(this.outputMode, v)).join('\n')
+        .map(v => inputModes[0].decode(v))
+        .map(v => outputModes[this.outputMode].encode(v)).join('\n')
     },
     outputText () {
       return this.inputText
         .split(/\n/)
-        .map(v => decode(this.inputMode, v))
-        .map(v => encode(this.outputMode, v)).join('\n')
+        .map(v => inputModes[this.inputMode].decode(v))
+        .map(v => outputModes[this.outputMode].encode(v)).join('\n')
     }
   }
 }
