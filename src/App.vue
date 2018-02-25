@@ -8,12 +8,12 @@
           <div class="column">
             <h2 class="title is-3">Input</h2>
             <mode-select :modes="modes" v-model="inputMode" />
-            <textarea class="textarea" placeholder=""></textarea>
+            <textarea class="textarea" placeholder="" />
           </div>
           <div class="column">
             <h2 class="title is-3">Output</h2>
             <mode-select :modes="modes" v-model="outputMode" />
-            <textarea class="textarea" placeholder=""></textarea>
+            <textarea class="textarea" placeholder="" />
           </div>
         </div>
       </main>
@@ -39,7 +39,7 @@ const modes = [
 ]
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     modeSelect
   },

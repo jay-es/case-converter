@@ -4,10 +4,15 @@ module.exports = {
     es6: true,
     mocha: true,
   },
-  extends: 'standard',
+  extends: [
+    'standard',
+    'plugin:vue/strongly-recommended'
+  ],
   plugins: [
+    'vue'
   ],
   rules: {
+    'vue/max-attributes-per-line': [2, { singleline: 2 }]
   },
   globals: {
   }

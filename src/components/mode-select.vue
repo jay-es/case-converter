@@ -2,10 +2,11 @@
   <section class="mode-select">
     <b-field position="is-centered">
       <b-radio-button
-        v-for="modeName of modes"
+        v-for="(modeName, i) of modes"
+        :key="i"
         v-model="value"
         :native-value="modeName"
-         size="is-small"
+        size="is-small"
       >
         <span>{{ modeName }}</span>
       </b-radio-button>
@@ -18,20 +19,23 @@ export default {
   props: {
     modes: {
       type: Array,
-      required: true,
-    },
+      required: true
+    }
   },
-  data() {
+  data () {
     return {
-      value: this.modes[0],
-    };
+      value: ''
+    }
   },
   watch: {
-    value(v) {
-      this.$emit('input', v);
-    },
+    value (v) {
+      this.$emit('input', v)
+    }
   },
-};
+  mounted () {
+    this.value = this.modes[0]
+  }
+}
 </script>
 
 <style lang="scss">
