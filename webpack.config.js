@@ -107,3 +107,16 @@ if (process.env.NODE_ENV === 'production') {
     })
   ])
 }
+
+if (process.env.NODE_ENV === 'test') {
+  module.exports.entry = null
+  module.exports.devtool = false
+
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    })
+  ])
+}
