@@ -1,9 +1,15 @@
 <template>
   <div id="app">
+    <header class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title is-1 is-primary">Case Converter</h1>
+          <h2 class="subtitle">converts every line</h2>
+        </div>
+      </div>
+    </header>
     <section class="section">
       <main class="container">
-        <h1 class="title is-1">Case Converter</h1>
-
         <div class="columns">
           <div class="column">
             <h2 class="title is-3">Input</h2>
@@ -120,6 +126,9 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 </script>
 
 <style lang="scss">
+.hero-body {
+  padding: 1.5rem; // 3rem 1.5rem
+}
 .textarea {
   height: 30em;
   resize: none;
