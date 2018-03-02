@@ -24,9 +24,11 @@ describe('App', () => {
     })
     it('snakeCase', () => {
       assert.strictEqual('snakeCase', detectModeName('a_b_c_d'))
+      assert.strictEqual('snakeCase', detectModeName('A_B_C_D'))
     })
     it('kebabCase', () => {
       assert.strictEqual('kebabCase', detectModeName('a-b-c-d'))
+      assert.strictEqual('kebabCase', detectModeName('A-B-C-D'))
     })
   })
 })

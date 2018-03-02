@@ -119,7 +119,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
         lines.reduce((acc, line) => acc + mode.decode(line).length, 0)
       )
       const maxCount = Math.max(...counts)
-      return counts.indexOf(maxCount)
+      return counts.lastIndexOf(maxCount)
     }
   }
 }

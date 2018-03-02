@@ -2,7 +2,7 @@ import assert from 'assert'
 import encode from '../encode'
 
 describe('encode', () => {
-  const input = ['foo', 'bar', 'baz']
+  const input = ['foo', 'Bar', 'baz']
 
   // it('spaceSeparated', () => {
   //   const output = 'foo bar baz'
@@ -10,7 +10,7 @@ describe('encode', () => {
   // })
 
   it('commaSeparated', () => {
-    const output = 'foo,bar,baz'
+    const output = 'foo,Bar,baz'
     assert.deepStrictEqual(output, encode('commaSeparated', input))
   })
 
@@ -45,12 +45,12 @@ describe('encode', () => {
   })
 
   it('snakeCase', () => {
-    const output = 'foo_bar_baz'
+    const output = 'foo_Bar_baz'
     assert.deepStrictEqual(output, encode('snakeCase', input))
   })
 
   it('kebabCase', () => {
-    const output = 'foo-bar-baz'
+    const output = 'foo-Bar-baz'
     assert.deepStrictEqual(output, encode('kebabCase', input))
   })
 })

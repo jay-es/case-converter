@@ -16,8 +16,8 @@ export default (mode, words) => {
 
     case 'pascalCase': return words.map(removeSignals).map(toCapitalizedCase).join('')
     case 'camelCase': return words.map(removeSignals).map(toCamelCase).join('')
-    case 'snakeCase': return words.map(removeSignals).map(toLowerCase).join('_')
-    case 'kebabCase': return words.map(removeSignals).map(toLowerCase).join('-')
+    case 'snakeCase': return words.map(removeSignals).join('_')
+    case 'kebabCase': return words.map(removeSignals).join('-')
   }
 
   // commaSeparated
