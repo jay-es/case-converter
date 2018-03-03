@@ -68,8 +68,14 @@ const outputModes = [
 
   new Mode('camelCase', 'camelCase'),
   new Mode('pascalCase', 'PascalCase'),
-  new Mode('snakeCase', 'snake_case'),
-  new Mode('kebabCase', 'kebab-case'),
+
+  // new Mode('snakeCase', 'snake_case'),
+  new Mode('upperSnakeCase', 'UPPER_SNAKE_CASE'),
+  new Mode('lowerSnakeCase', 'lower_snake_case'),
+
+  // new Mode('kebabCase', 'kebab-case'),
+  new Mode('upperKebabCase', 'UPPER-KEBEB-CASE'),
+  new Mode('lowerKebabCase', 'lower-kebab-case'),
 
   new Mode('commaSeparated', 'comma,separated')
 ]

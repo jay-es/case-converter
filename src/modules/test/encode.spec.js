@@ -49,8 +49,28 @@ describe('encode', () => {
     assert.deepStrictEqual(output, encode('snakeCase', input))
   })
 
+  it('upperSnakeCase', () => {
+    const output = 'FOO_BAR_BAZ'
+    assert.deepStrictEqual(output, encode('upperSnakeCase', input))
+  })
+
+  it('lowerSnakeCase', () => {
+    const output = 'foo_bar_baz'
+    assert.deepStrictEqual(output, encode('lowerSnakeCase', input))
+  })
+
   it('kebabCase', () => {
     const output = 'foo-Bar-baz'
     assert.deepStrictEqual(output, encode('kebabCase', input))
+  })
+
+  it('upperKebabCase', () => {
+    const output = 'FOO-BAR-BAZ'
+    assert.deepStrictEqual(output, encode('upperKebabCase', input))
+  })
+
+  it('lowerKebabCase', () => {
+    const output = 'foo-bar-baz'
+    assert.deepStrictEqual(output, encode('lowerKebabCase', input))
   })
 })
