@@ -1,0 +1,4 @@
+./src/**/test/*.spec.js
+--reporter dot
+--require ./test/setup.js
+--watch

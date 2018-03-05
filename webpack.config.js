@@ -110,7 +110,7 @@ if (process.env.NODE_ENV === 'production') {
 
 if (process.env.NODE_ENV === 'test') {
   module.exports.entry = null
-  module.exports.devtool = false
+  module.exports.devtool = 'inline-cheap-module-source-map'
 
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
