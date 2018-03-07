@@ -8,7 +8,6 @@ const removeSignals = text => text.replace(/[\W_]/, '')
 
 export default (mode, words) => {
   switch (mode) {
-    // case 'spaceSeparated': return words.join(' ')
     case 'upperCase': return words.map(toUpperCase).join(' ')
     case 'lowerCase': return words.map(toLowerCase).join(' ')
     case 'sentenceCase': return words.map(toSentenceCase).join(' ')
