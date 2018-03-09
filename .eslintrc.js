@@ -2,7 +2,6 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    mocha: true,
   },
   extends: [
     'standard',
@@ -14,6 +13,13 @@ module.exports = {
   rules: {
     'vue/max-attributes-per-line': [2, { singleline: 2 }]
   },
-  globals: {
-  }
+
+  overrides: [
+    {
+      files: "src/**/test/*.spec.js",
+      env: {
+        mocha: true
+      }
+    }
+  ]
 };
