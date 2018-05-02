@@ -4,73 +4,29 @@ import encode from '../encode'
 describe('encode', () => {
   const input = ['foo', 'Bar', 'baz']
 
-  // it('spaceSeparated', () => {
-  //   const output = 'foo bar baz'
-  //   assert.deepStrictEqual(output, encode('spaceSeparated', input))
-  // })
+  const tests = [
+    ['upperCase', 'FOO BAR BAZ'],
+    ['lowerCase', 'foo bar baz'],
+    ['sentenceCase', 'Foo bar baz'],
+    ['capitalizedCase', 'Foo Bar Baz'],
 
-  it('commaSeparated', () => {
-    const output = 'foo,Bar,baz'
-    assert.deepStrictEqual(output, encode('commaSeparated', input))
-  })
+    ['pascalCase', 'FooBarBaz'],
+    ['camelCase', 'fooBarBaz'],
 
-  it('upperCase', () => {
-    const output = 'FOO BAR BAZ'
-    assert.deepStrictEqual(output, encode('upperCase', input))
-  })
+    ['snakeCase', 'foo_Bar_baz'],
+    ['upperSnakeCase', 'FOO_BAR_BAZ'],
+    ['lowerSnakeCase', 'foo_bar_baz'],
 
-  it('lowerCase', () => {
-    const output = 'foo bar baz'
-    assert.deepStrictEqual(output, encode('lowerCase', input))
-  })
+    ['kebabCase', 'foo-Bar-baz'],
+    ['upperKebabCase', 'FOO-BAR-BAZ'],
+    ['lowerKebabCase', 'foo-bar-baz'],
 
-  it('capitalizedCase ', () => {
-    const output = 'Foo Bar Baz'
-    assert.deepStrictEqual(output, encode('capitalizedCase', input))
-  })
+    ['commaSeparated', 'foo,Bar,baz']
+  ]
 
-  it('sentenceCase', () => {
-    const output = 'Foo bar baz'
-    assert.deepStrictEqual(output, encode('sentenceCase', input))
-  })
-
-  it('camelCase', () => {
-    const output = 'fooBarBaz'
-    assert.deepStrictEqual(output, encode('camelCase', input))
-  })
-
-  it('pascalCase', () => {
-    const output = 'FooBarBaz'
-    assert.deepStrictEqual(output, encode('pascalCase', input))
-  })
-
-  it('snakeCase', () => {
-    const output = 'foo_Bar_baz'
-    assert.deepStrictEqual(output, encode('snakeCase', input))
-  })
-
-  it('upperSnakeCase', () => {
-    const output = 'FOO_BAR_BAZ'
-    assert.deepStrictEqual(output, encode('upperSnakeCase', input))
-  })
-
-  it('lowerSnakeCase', () => {
-    const output = 'foo_bar_baz'
-    assert.deepStrictEqual(output, encode('lowerSnakeCase', input))
-  })
-
-  it('kebabCase', () => {
-    const output = 'foo-Bar-baz'
-    assert.deepStrictEqual(output, encode('kebabCase', input))
-  })
-
-  it('upperKebabCase', () => {
-    const output = 'FOO-BAR-BAZ'
-    assert.deepStrictEqual(output, encode('upperKebabCase', input))
-  })
-
-  it('lowerKebabCase', () => {
-    const output = 'foo-bar-baz'
-    assert.deepStrictEqual(output, encode('lowerKebabCase', input))
-  })
+  for (const [name, output] of tests) {
+    it(name, () => {
+      assert.deepStrictEqual(output, encode(name, input))
+    })
+  }
 })

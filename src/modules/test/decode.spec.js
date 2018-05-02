@@ -4,40 +4,21 @@ import decode from '../decode'
 describe('decode', () => {
   const output = ['foo', 'bar', 'baz']
 
-  it('spaceSeparated', () => {
-    const input = 'foo bar baz'
-    assert.deepStrictEqual(output, decode('spaceSeparated', input))
-  })
+  const tests = [
+    ['commaSeparated', 'foo,bar,baz', output],
+    ['spaceSeparated', 'foo bar baz', output],
 
-  it('commaSeparated', () => {
-    const input = 'foo,bar,baz'
-    assert.deepStrictEqual(output, decode('commaSeparated', input))
-  })
+    ['snakeCase', 'foo_bar_baz', output],
+    ['kebabCase', 'foo-bar-baz', output],
 
-  it('camelCase', () => {
-    const input = 'fooBarBaz'
-    const output = ['foo', 'Bar', 'Baz']
-    assert.deepStrictEqual(output, decode('camelCase', input))
-  })
+    ['camelCase', 'fooBarBaz', ['foo', 'Bar', 'Baz']],
+    ['camelCase', 'fooBARBaz', ['foo', 'BAR', 'Baz']],
+    ['camelCase', 'FooBarBaz', ['Foo', 'Bar', 'Baz']]
+  ]
 
-  it('camelCase', () => {
-    const input = 'sendHTMLMail'
-    const output = ['send', 'HTML', 'Mail']
-    assert.deepStrictEqual(output, decode('camelCase', input))
-  })
-
-  it('PascalCase', () => {
-    const input = 'FooBarBaz'
-    const output = ['Foo', 'Bar', 'Baz']
-    assert.deepStrictEqual(output, decode('camelCase', input))
-  })
-  it('snakeCase', () => {
-    const input = 'foo_bar_baz'
-    assert.deepStrictEqual(output, decode('snakeCase', input))
-  })
-
-  it('kebabCase', () => {
-    const input = 'foo-bar-baz'
-    assert.deepStrictEqual(output, decode('kebabCase', input))
-  })
+  for (const [name, input, output] of tests) {
+    it(name, () => {
+      assert.deepStrictEqual(output, decode(name, input))
+    })
+  }
 })

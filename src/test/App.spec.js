@@ -8,27 +8,23 @@ describe('App', () => {
   describe('detectModeIndex', () => {
     const vm = new Constructor().$mount()
 
-    const detectModeName = (inputText) => {
-      const index = vm.detectModeIndex(inputText)
-      return vm.inputModes[index].val
-    }
+    const tests = [
+      ['commaSeparated', 'a,b,c,d'],
+      ['spaceSeparated', 'a b c d'],
 
-    it('spaceSeparated', () => {
-      assert.strictEqual('spaceSeparated', detectModeName('a b c d'))
-    })
-    it('commaSeparated', () => {
-      assert.strictEqual('commaSeparated', detectModeName('a,b,c,d'))
-    })
-    it('camelCase', () => {
-      assert.strictEqual('camelCase', detectModeName('AaBbCcDd'))
-    })
-    it('snakeCase', () => {
-      assert.strictEqual('snakeCase', detectModeName('a_b_c_d'))
-      assert.strictEqual('snakeCase', detectModeName('A_B_C_D'))
-    })
-    it('kebabCase', () => {
-      assert.strictEqual('kebabCase', detectModeName('a-b-c-d'))
-      assert.strictEqual('kebabCase', detectModeName('A-B-C-D'))
-    })
+      ['snakeCase', 'a_b_c_d'],
+      ['snakeCase', 'A_B_C_D'],
+      ['kebabCase', 'a-b-c-d'],
+      ['kebabCase', 'A-B-C-D'],
+
+      ['camelCase', 'AaBbCcDd']
+    ]
+
+    for (const [name, input] of tests) {
+      it(name, () => {
+        const index = vm.detectModeIndex(input)
+        assert.strictEqual(name, vm.inputModes[index].val)
+      })
+    }
   })
 })
