@@ -42,7 +42,7 @@
 
     <footer class="footer">
       <div class="container">
-        &copy; jshindo-gladd
+        &copy; J. Shindo
       </div>
     </footer>
   </div>
